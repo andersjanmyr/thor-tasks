@@ -4,6 +4,8 @@
 #
 class Maven < Thor::Group
   include Thor::Actions
+  desc 'Generates maven layouts'
+  
   argument :name
   class_option :package, :default => 'com.jayway', 
     :desc => 'The package will be prepended before the NAME'
