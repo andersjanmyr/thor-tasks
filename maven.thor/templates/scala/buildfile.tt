@@ -1,0 +1,9 @@
+require 'buildr/scala'
+
+define '<%= package %>' do
+	
+	define '<%= name %>' do
+		test.using(:<%= test %>)
+	end 
+
+end

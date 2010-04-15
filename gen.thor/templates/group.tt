@@ -1,0 +1,17 @@
+class <%= name.capitalize %> < Thor::Group
+  include Thor::Actions
+  argument :name
+  class_option :opt, :type => :string, :default => 'def', :aliases => %w(-o)  
+  
+  def self.source_root
+    File.dirname(__FILE__)
+  end
+  
+  <% tasks.each do |task| %>
+  def <%=task%>
+    puts "<%=task%> called #{options.inspect}"
+    #template("templates/<%=task%>.tt", "#{task}/main.rb")       
+  end
+  <% end %>
+  
+end

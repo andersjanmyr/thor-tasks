@@ -1,0 +1,8 @@
+package <%= package %>.<%= name %>
+
+/**
+ *
+ */
+object App extends Application {
+  println( "Hello World!" )
+}
