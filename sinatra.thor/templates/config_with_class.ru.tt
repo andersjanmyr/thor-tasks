@@ -1,0 +1,6 @@
+require 'bundler'
+Bundler.require
+
+require './<%= @dir %>'
+<%= @name %>.run!
+

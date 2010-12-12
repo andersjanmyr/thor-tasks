@@ -1,0 +1,13 @@
+require 'sinatra'
+require 'sinatra/reloader'
+require 'bundler'
+Bundler.require
+
+class <%= @name %> < Sinatra::Base
+
+  get '/env' do
+    p request.env
+    request.env.inspect
+  end
+end
+
