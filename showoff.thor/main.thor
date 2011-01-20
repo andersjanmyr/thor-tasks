@@ -2,6 +2,7 @@ class Showoff < Thor::Group
   include Thor::Actions
   argument :name, :desc => 'The name and title of the presentation'
   class_option :sub_title, :aliases => "-s", :desc => 'The sub title is displayed below the NAME'
+  class_option :git, :type => :boolean, :aliases => '-g', :desc => 'Initialize a git repository'
 
 
   def self.source_root
@@ -22,6 +23,10 @@ class Showoff < Thor::Group
 
   def abstract
     template('templates/abstract.md.erb', "#{dir}/abstract.md")
+  end
+
+  def git
+    `git init #{dir}` if options[:git]
   end
 
 private
