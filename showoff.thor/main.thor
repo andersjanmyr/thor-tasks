@@ -1,5 +1,6 @@
 class Showoff < Thor::Group
   include Thor::Actions
+  desc 'Generates a Showoff presentation'
   argument :name, :desc => 'The name and title of the presentation'
   class_option :sub_title, :aliases => "-s", :desc => 'The sub title is displayed below the NAME'
   class_option :git, :type => :boolean, :aliases => '-g', :desc => 'Initialize a git repository'
