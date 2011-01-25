@@ -10,20 +10,8 @@ class Showoff < Thor::Group
     File.dirname(__FILE__)
   end
  
-  def files
-    directory('files', "#{dir}")
-  end
-
-  def showoff_json
-    template("templates/showoff.json.erb", "#{dir}/showoff.json")       
-  end
-  
-  def slides
-    template("templates/slides/01_intro.md.erb", "#{dir}/slides/01_intro.md")       
-  end
-
-  def abstract
-    template('templates/abstract.md.erb', "#{dir}/abstract.md")
+  def templates
+    directory('templates', "#{dir}")
   end
 
   def git
