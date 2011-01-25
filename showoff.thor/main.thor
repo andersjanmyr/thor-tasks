@@ -19,7 +19,7 @@ class Showoff < Thor::Group
   end
   
   def slides
-    template("templates/slides/01_intro.md.erb", "#{dir}/slides/01.intro.md")       
+    template("templates/slides/01_intro.md.erb", "#{dir}/slides/01_intro.md")       
   end
 
   def abstract
