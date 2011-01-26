@@ -7,32 +7,34 @@ class Gen < Thor
   end
   
   desc 'single NAME', 'Generate a new single file thor dir'
-  method_option :task, :type => :string, :default => 'task', :aliases => %w(-t)
+  method_option :tasks, :type => :array, :default => %(), :aliases => %w(-t)
   def single(name)
     @name = name
-    template("templates/single.tt", "#{name}.thor/main.thor")       
-    template("templates/template.tt", "#{name}.thor/templates/#{task}.tt")       
+    template("templates/single.tt", "#{name}.thor/main.thor") 
+    tasks.each do |task|
+      template("templates/template.tt", "#{name}.thor/templates/#{task}/sample.txt.tt")       
+    end
+    directory("templates/spec", "#{name}.thor/spec")
   end
 
   desc 'group NAME', 'Generate a new group file thor dir'
-  method_option :tasks, :type => :array, :default => %w(one two), :aliases => %w(-t)
+  method_option :tasks, :type => :array, :default => %w(), :aliases => %w(-t)
   def group(name)
     @name = name
     template("templates/group.tt", "#{name}.thor/main.thor")    
-    tasks.each do |task|   
-      template("templates/template.tt", "#{name}.thor/templates/#{task}.tt")       
-    end
+    template("templates/template.tt", "#{name}.thor/templates/sample.txt.tt")       
+    directory("templates/spec", "#{name}.thor/spec")
   end
 
-  no_tasks do
-    def task
-      options[:task]
-    end
+  private
 
-    def tasks
-      options[:tasks]
-    end
-  end  
+  def task
+    options[:task]
+  end
+
+  def tasks
+    options[:tasks]
+  end
   
   
 end

@@ -6,12 +6,14 @@ class <%= name.capitalize %> < Thor
     File.dirname(__FILE__)
   end
   
-  desc '<%=task%> NAME', 'Generate a new single file'
-  method_option :opt, :type => :string, :default => 'def', :aliases => %w(-o)
-  def <%=task%>(name)
-    @name = name
-    puts "<%=task%> called #{name} #{options.inspect}"
-    #template("templates/<%=task%>.tt", "#{task}/main.rb")       
-  end
+  <% tasks.each do |task| %>
+    desc '<%=task%> NAME', 'Generate a new single file'
+    method_option :opt, :type => :string, :default => 'def', :aliases => %w(-o)
+    def <%=task%>(name)
+      @name = name
+      puts "<%=task%> called #{name} #{options.inspect}"
+      #directory("templates/<%=task%>", "#{name}")       
+    end
+  <% end %>
   
 end
