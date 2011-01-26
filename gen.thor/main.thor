@@ -7,7 +7,7 @@ class Gen < Thor
   end
   
   desc 'single NAME', 'Generate a new single file thor dir'
-  method_option :tasks, :type => :array, :default => %(), :aliases => %w(-t)
+  method_option :tasks, :type => :array, :default => %w(), :aliases => %w(-t)
   def single(name)
     @name = name
     template("templates/single.tt", "#{name}.thor/main.thor") 
