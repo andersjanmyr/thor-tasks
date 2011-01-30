@@ -14,6 +14,7 @@ class Sinatra < Thor
     template("templates/app.rb.tt", "#{@dir}/app.rb")       
     template("templates/config.ru.tt", "#{@dir}/config.ru")       
     template("templates/Gemfile.tt", "#{@dir}/Gemfile")       
+    template("templates/livereload.tt", "#{@dir}/.livereload")       
   end
 
   desc 'create_app NAME', 'Generate a new sinatra app with class'
@@ -24,6 +25,7 @@ class Sinatra < Thor
     template("templates/app_with_class.rb.tt", "#{@dir}/#{@dir}.rb")       
     template("templates/config_with_class.ru.tt", "#{@dir}/config.ru")       
     template("templates/Gemfile.tt", "#{@dir}/Gemfile")       
+    template("templates/livereload.tt", "#{@dir}/.livereload")       
   end
   
 end
