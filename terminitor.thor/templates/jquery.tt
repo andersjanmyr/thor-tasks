@@ -1,0 +1,11 @@
+# <%= @name%>
+
+before { run "cd ~/projects/<%=@dir %>" }
+
+tab :name => "LiveReload", :settings => "Homebrew" do
+  run "rvm use system"
+  run "livereload"
+end
+
+tab :name => "Bash" do
+end

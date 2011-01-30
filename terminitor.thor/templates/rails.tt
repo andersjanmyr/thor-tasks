@@ -1,0 +1,23 @@
+# <%= @name%>
+
+before { run "cd ~/projects/<%=@dir %>" }
+
+tab :name => "Spork", :settings => "Homebrew" do
+  run "spork"
+end
+
+tab :name => "Autotest", :settings => "Homebrew" do
+  run "autotest"
+end
+
+tab :name => "LiveReload", :settings => "Homebrew" do
+  run "rvm use system"
+  run "livereload"
+end
+
+tab :name => "Rails" do
+  run "rails server"
+end
+
+tab :name => "Bash" do
+end
