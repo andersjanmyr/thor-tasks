@@ -55,3 +55,22 @@ generators. It generates them and sets up rspec for simple testing.
           create  new_task.thor/spec/integration/main_spec.rb
           create  new_task.thor/spec/spec_helper.rb
 
+
+#### Testing
+
+To simplify testing the generated `spec_helper.rb` contains two helper
+methods `thor` and `file`. 
+
+`thor` takes a string of arguments and runs Thor with them.
+
+`file` takes a filename as parameter and returns a File object that is
+enhanced with two methods, `exist?` and `contents`, allowing us to write
+specs like this:
+
+
+    it 'should create the expected files' do
+      thor('terminitor rails dummy')
+      dummy_file.should exist
+    end
+
+

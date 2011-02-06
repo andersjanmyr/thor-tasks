@@ -36,6 +36,10 @@ RSpec.configure do |config|
     rm_rf sandbox
   end
 
+  # Creates a file object from a filename.
+  # If the filename is absolute, the file references the actual file.
+  # If the filename is relative, a file is referenced to a sandboxed
+  # file.
   def file(name)
     if name.start_with?('/')
       File.new(name)
@@ -48,10 +52,12 @@ RSpec.configure do |config|
 end
 
 module FileExt
+  # Checks if a file exists.
   def exist?
     File.exist?(path)
   end
 
+  # The contents of the file.
   def contents
     read
   end
