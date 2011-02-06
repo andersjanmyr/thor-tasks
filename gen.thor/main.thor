@@ -8,7 +8,7 @@ class Gen < Thor
   
   desc 'single NAME', 'Generate a "class Name < Thor" generator'
   method_option :tasks, :type => :array, :default => %w(), :aliases => %w(-t),
-    :desc => 'An list of tasks, generates one method and template per task'
+    :desc => 'An list of tasks, generates one method per task'
   def single(name)
     @name = name
     template("templates/single.tt", "#{name}.thor/main.thor") 
@@ -20,7 +20,7 @@ class Gen < Thor
 
   desc 'group NAME', 'Generate a "class Name < Thor::Group generator'
   method_option :tasks, :type => :array, :default => %w(), :aliases => %w(-t),
-    :desc => 'An list of tasks, generates one method and template per task'
+    :desc => 'An list of tasks, generates one method per task'
 
   def group(name)
     @name = name
