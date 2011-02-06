@@ -6,8 +6,9 @@ class Gen < Thor
     File.dirname(__FILE__)
   end
   
-  desc 'single NAME', 'Generate a new single file thor dir'
-  method_option :tasks, :type => :array, :default => %w(), :aliases => %w(-t)
+  desc 'single NAME', 'Generate a "class Name < Thor" generator'
+  method_option :tasks, :type => :array, :default => %w(), :aliases => %w(-t),
+    :desc => 'An list of tasks, generates one method and template per task'
   def single(name)
     @name = name
     template("templates/single.tt", "#{name}.thor/main.thor") 
@@ -17,8 +18,10 @@ class Gen < Thor
     directory("templates/spec", "#{name}.thor/spec")
   end
 
-  desc 'group NAME', 'Generate a new group file thor dir'
-  method_option :tasks, :type => :array, :default => %w(), :aliases => %w(-t)
+  desc 'group NAME', 'Generate a "class Name < Thor::Group generator'
+  method_option :tasks, :type => :array, :default => %w(), :aliases => %w(-t),
+    :desc => 'An list of tasks, generates one method and template per task'
+
   def group(name)
     @name = name
     template("templates/group.tt", "#{name}.thor/main.thor")    
