@@ -21,19 +21,18 @@ describe 'thor showoff' do
       clean
       thor('showoff dummy')
     end
-   
-    it 'should create the expected files' do
-      file('dummy/abstract.md').should exist
-      file('dummy/jayway.css').should exist
-      file('dummy/showoff.json').should exist
-      file('dummy/images/jay.png').should exist
-      file('dummy/images/jay_small.png').should exist
-      file('dummy/slides/01_intro.md').should exist
-      file('dummy/slides/02_code.md').should exist
-      file('dummy/slides/99_summary.md').should exist
-    end
-
-    context 'abstract.md' do
+    
+    ['abstract.md', 'jayway.css', 'showoff.json', 
+     'images/jay.png', 'images/jay_small.png',
+     'slides/01_intro.md', 'slides/02_code.md', 
+     'slides/99_summary.md'].each do |name|
+       filename = "dummy/#{name}"
+       it "should create #{filename}" do
+         file(filename).should exist
+       end
+     end
+     
+   context 'abstract.md' do
       it 'should contain title' do
         file('dummy/abstract.md').contents.should match(/## dummy/)
       end
