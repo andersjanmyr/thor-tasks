@@ -1,10 +1,11 @@
 ## Thor Tasks
 
-Contains a bunch of generators written in thor.
+Contains a bunch of generators written in thor. What is a generator
+without a generator generator. **Gen** is then name of this one.
 
 ### Gen
 
-**Gen** is a generator generator. It is used to create new Thor
+Gen is a generator generator. It is used to create new Thor
 generators. It generates them and sets up rspec for simple testing.
 
     $ thor help gen

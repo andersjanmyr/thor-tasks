@@ -37,7 +37,13 @@ RSpec.configure do |config|
   end
 
   def file(name)
-    File.new(File.join(sandbox, name))
+    if name.start_with?('/')
+      File.new(name)
+    elsif name.start_with?('~')
+      File.new(name.gsub('~', "#{ENV['HOME']}"))
+    else
+      File.new(File.join(sandbox, name))
+    end
   end
 end
 

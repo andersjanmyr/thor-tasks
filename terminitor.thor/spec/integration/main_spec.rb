@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), '../spec_helper')
 
 describe 'thor terminitor' do
  
-  let(:dummy_file) {File.new("#{ENV['HOME']}/.terminitor/dummy.term")}
+  let(:dummy_file) {file('~/.terminitor/dummy.term')}
 
   describe 'running rails with NAME argument' do
    
