@@ -73,4 +73,59 @@ specs like this:
       dummy_file.should exist
     end
 
+    it 'should contain the name' do
+      file('dummy/slides/01_intro.md').contents.should match(/# dummy #/)
+    end
+
+### Rubyscript
+
+The rubyscript task generates a file that is set up with OptionParser
+parsing configured and options for `help`, `verbose`, and `version`.
+
+    $ thor rubyscript:generate new_script
+          create  new_script.rb
+
+### Sinatra
+
+The sintra task generates a Sintra project setup with a `Gemfile` for
+Bundler and with `sinatra/reloader` configured for development mode.
+It is also setup for testing with rspec and rack-test.
+
+There are two ways to call the task:
+
+    $ thor help sinatra
+    Tasks:
+      thor sinatra:create NAME      # Generate a new sinatra app
+      thor sinatra:create_app NAME  # Generate a new sinatra app with class
+      thor sinatra:help [TASK]      # Describe available tasks or one specific task
+
+
+### terminitor
+
+The terminitor task generates a terminitor configuration file for
+different kinds of projects. 
+
+    $ thor help terminitor
+    Tasks:
+      thor terminitor:help [TASK]  # Describe available tasks or one specific task
+      thor terminitor:jquery NAME  # Creates a terminitor config for jQuery
+      thor terminitor:rails NAME   # Creates a terminitor config for Rails
+
+
+The jQuery terminitor file sets up terminitor to open two tabs in the
+correct directory 
+
+* Livereload, uses RVM to use the system ruby.
+* A bash shell
+
+
+The rails terminitor file sets up terminitor to open five tabs in the
+correct directory 
+
+* Spork
+* Autotest
+* Livereload, uses RVM to use the system ruby.
+* A Rails Server
+* A bash shell
+
 
