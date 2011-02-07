@@ -1,7 +1,11 @@
 require 'sinatra/base'
-require 'sinatra/reloader'
 require 'bundler'
 Bundler.require
+
+configure(:development) do |c|
+  require "sinatra/reloader"
+  c.also_reload "*.rb"
+end
 
 get '/env' do
   p request.env

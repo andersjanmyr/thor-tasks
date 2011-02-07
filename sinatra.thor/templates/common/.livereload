@@ -18,4 +18,3 @@ config.exts << 'haml'
 
 # wait 100ms for more changes before reloading a page
 #config.grace_period = 0.1
-

@@ -1,9 +1,12 @@
 require 'sinatra/base'
-require 'sinatra/reloader'
 require 'bundler'
 Bundler.require
 
 class <%= @name %> < Sinatra::Base
+ configure(:development) do
+    register Sinatra::Reloader
+    also_reload "lib/**/*.rb"
+  end
 
   get '/env' do
     p request.env
