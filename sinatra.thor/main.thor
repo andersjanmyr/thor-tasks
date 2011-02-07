@@ -21,7 +21,9 @@ class Sinatra < Thor
     @name = Thor::Util.camel_case(name)
     puts "Creating new sinatra app, with class #{@dir}"
     directory('templates/common', @dir)
-    directory('templates/class', @dir)
+    template("templates/class/lib/app.rb.tt", "#{@dir}/lib/#{@dir}.rb")
+    template("templates/class/lib/version.rb.tt", "#{@dir}/lib/#{@dir}/version.rb")
+    template("templates/class/config.ru.tt", "#{@dir}/config.ru")   
   end
   
 end

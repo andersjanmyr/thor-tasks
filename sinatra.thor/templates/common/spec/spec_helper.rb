@@ -5,7 +5,8 @@ require 'bundler'
 Bundler.require
 
 require 'rack/test'
-require 'app'
+
+set :environment, :test
 
 Rspec.configure do |c|
   c.include Rack::Test::Methods
