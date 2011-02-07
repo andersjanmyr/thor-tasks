@@ -6,6 +6,8 @@ class Terminitor < Thor
   end
  
   desc 'rails NAME', "Creates a terminitor config for Rails"
+  method_option :project_dir, :type => :string, :default => '~/project', :aliases => %w(-p),
+    :desc => 'The projects directory'
   def rails(name)
     common(name)
     template("templates/rails.tt", @filename)
@@ -18,10 +20,15 @@ class Terminitor < Thor
   end
 
   private
+
   def common(name)
     @dir = Thor::Util.snake_case(name)
     @filename = "~/.terminitor/#{@dir}.term"
     @name = name.capitalize
     puts "Creating new terminior config #{@filename}"
+  end
+
+  def project_dir
+    options[:project_dir] || '~/projects'
   end
 end

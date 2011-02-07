@@ -1,6 +1,6 @@
 # <%= @name%>
 
-before { run "cd ~/projects/<%=@dir %>" }
+before { run "cd <%=project_dir%>/<%=@dir %>" }
 
 tab :name => "Spork", :settings => "Homebrew" do
   run "spork"

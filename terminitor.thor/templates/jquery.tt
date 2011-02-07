@@ -1,6 +1,6 @@
 # <%= @name%>
 
-before { run "cd ~/projects/<%=@dir %>" }
+before { run "cd <%=project_dir%>/<%=@dir %>" }
 
 tab :name => "LiveReload", :settings => "Homebrew" do
   run "rvm use system"
