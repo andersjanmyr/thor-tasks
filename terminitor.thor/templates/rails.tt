@@ -2,12 +2,12 @@
 
 before { run "cd <%=project_dir%>/<%=@dir %>" }
 
-tab :name => "Spork", :settings => "Homebrew" do
+tab :name => "Spork", :settings => "Ocean" do
   run "spork"
 end
 
-tab :name => "Autotest", :settings => "Homebrew" do
-  run "autotest"
+tab :name => "Watchr", :settings => "Basic" do
+  run "watch"
 end
 
 tab :name => "LiveReload", :settings => "Homebrew" do
