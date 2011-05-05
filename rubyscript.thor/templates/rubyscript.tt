@@ -23,7 +23,7 @@ def default_options
   ],
   ['--version', '-V', "Display the program version.",
    lambda { |value|
-     puts "#{program_name}, version #{PROGRAM_VERSION}"
+     puts "#{PROGRAM_NAME}, version #{PROGRAM_VERSION}"
      exit
    }
   ]
