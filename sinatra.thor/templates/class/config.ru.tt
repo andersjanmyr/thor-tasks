@@ -3,5 +3,5 @@ require 'bundler'
 Bundler.require
 
 require '<%= @dir %>'
-<%= @name %>::App.run!
+run <%= @name %>::App
 
