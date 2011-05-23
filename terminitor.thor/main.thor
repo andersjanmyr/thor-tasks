@@ -6,7 +6,7 @@ class Terminitor < Thor
   end
  
   desc 'rails NAME', "Creates a terminitor config for Rails"
-  method_option :project_dir, :type => :string, :default => '~/project', :aliases => %w(-p),
+  method_option :project_dir, :type => :string, :default => '~/Projects', :aliases => %w(-p),
     :desc => 'The projects directory'
   def rails(name)
     common(name)
