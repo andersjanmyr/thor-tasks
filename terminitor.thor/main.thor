@@ -23,12 +23,12 @@ class Terminitor < Thor
 
   def common(name)
     @dir = Thor::Util.snake_case(name)
-    @filename = "~/.terminitor/#{@dir}.term"
+    @filename = "~/.config/terminitor/#{@dir}.term"
     @name = name.capitalize
-    puts "Creating new terminior config #{@filename}"
+    puts "Creating new terminitor config #{@filename}"
   end
 
   def project_dir
-    options[:project_dir] || '~/projects'
+    options[:project_dir] || '~/Projects'
   end
 end
