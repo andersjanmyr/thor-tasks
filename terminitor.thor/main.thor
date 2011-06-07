@@ -14,6 +14,8 @@ class Terminitor < Thor
   end
  
   desc 'jquery NAME', "Creates a terminitor config for jQuery"
+  method_option :project_dir, :type => :string, :default => '~/Projects', :aliases => %w(-p),
+    :desc => 'The projects directory'
   def jquery(name)
     common(name)
     template("templates/jquery.tt", @filename)
