@@ -15,10 +15,48 @@ h1, h2 {
   content: url(images/jay_small.png);
 }
 
-::-moz-selection{
-    background: pink;
+th {
+    font-size: 2em;
+    text-align: left;
+    background: darkgray;
+    padding: .5em;
+}
+th:nth-child(3) {
+    font-size: 1.2em;
 }
 
-::selection {
-    background: pink;
+tr:nth-child(2n+1) {
+    background: lightgray;
 }
+td {
+    padding: .4em;
+}
+
+td pre {
+  font-size: 36px;
+}
+
+td:nth-child(1) {
+    font-size: 2em;
+    padding-left: .4em;
+}
+td:nth-child(3) {
+    font-size: 1.4em;
+    padding-left: .4em;
+}
+
+.bullets ul {
+  list-style: square url(images/jay_bullet_large.png);
+  list-style-position: inside;
+}
+
+.small ul {
+  list-style: square url(images/jay_bullet.png);
+  list-style-position: inside;
+}
+
+.bullets ul li {
+  text-align: left;
+  padding: 10px 90px;
+}
+
