@@ -4,7 +4,7 @@ require "#{ep}/spec_helper"
 require 'json'
 require '<%=@name%>'
 
-describe 'Application' do
+describe '<%=@constant_name%>::App' do
 
   def app
     <%=@constant_name%>::App

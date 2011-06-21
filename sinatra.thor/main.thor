@@ -25,7 +25,8 @@ class Sinatra < Thor
     template("templates/class/spec/spec_helper.rb.tt", "#{@target}/spec/spec_helper.rb")
     template("templates/class/spec/support/struct_matcher.rb", "#{@target}/spec/support/struct_matcher.rb")
     template("templates/class/spec/app/app_spec.rb.tt", "#{@target}/spec/app/#{@name}_spec.rb")
-    template("templates/class/config.ru.tt", "#{@target}/config.ru")   
+    template("templates/class/config.ru.tt", File.join(@target, 'config.ru'))
+    init_git 
   end
 
   private
@@ -39,15 +40,17 @@ class Sinatra < Thor
   end
 
   def common
-    template(File.join("templates/common/Gemfile.tt"), File.join(@target, "Gemfile"))
-    template(File.join("templates/common/Rakefile.tt"), File.join(@target, "Rakefile"))
-    template(File.join("templates/common/gitignore.tt"), File.join(@target, ".gitignore"))
-    template(File.join("templates/common/newgem.gemspec.tt"), File.join(@target, "#{@name}.gemspec"))
-    template(File.join("templates/common/bin/cli.tt"), File.join(@target, 'bin', @name))
+    template("templates/common/Gemfile.tt", File.join(@target, "Gemfile"))
+    template("templates/common/Rakefile.tt", File.join(@target, "Rakefile"))
+    template("templates/common/gitignore.tt", File.join(@target, ".gitignore"))
+    template("templates/common/newgem.gemspec.tt", File.join(@target, "#{@name}.gemspec"))
+    bin_file = File.join(@target, 'bin', @name)
+    template("templates/common/bin/cli.tt", bin_file)
+    chmod(bin_file, 0744)
   end
 
   def init_git
-    Bundler.ui.info "Initializating git repo in #{@name}"
+    puts "Initializating git repo in #{@name}"
     Dir.chdir(@target) { `git init`; `git add .` }
   end
   

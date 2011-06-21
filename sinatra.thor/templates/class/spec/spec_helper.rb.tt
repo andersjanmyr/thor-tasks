@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift File.dirname(__FILE__)
 $LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib'
-p $LOAD_PATH
+
 require 'rack/test'
 require 'support/struct_matcher'
 require '<%=@name%>'
