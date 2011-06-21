@@ -13,6 +13,7 @@ class Sinatra < Thor
     puts "Creating new Sinatra simple #{@name}"
     common
     directory('templates/simple', @target)
+    init_git
   end
 
   desc 'app NAME', 'Generate a new app with class'
