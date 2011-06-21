@@ -1,6 +1,4 @@
-require 'sinatra/base'
-require 'bundler'
-Bundler.require
+require 'sinatra'
 
 configure(:development) do |c|
   require "sinatra/reloader"

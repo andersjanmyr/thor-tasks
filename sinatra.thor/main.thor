@@ -26,6 +26,7 @@ class Sinatra < Thor
     template("templates/class/spec/support/struct_matcher.rb", "#{@target}/spec/support/struct_matcher.rb")
     template("templates/class/spec/app/app_spec.rb.tt", "#{@target}/spec/app/#{@name}_spec.rb")
     template("templates/class/config.ru.tt", File.join(@target, 'config.ru'))
+    template("templates/class/newgem.gemspec.tt", File.join(@target, "#{@name}.gemspec"))
     init_git 
   end
 
@@ -43,7 +44,6 @@ class Sinatra < Thor
     template("templates/common/Gemfile.tt", File.join(@target, "Gemfile"))
     template("templates/common/Rakefile.tt", File.join(@target, "Rakefile"))
     template("templates/common/gitignore.tt", File.join(@target, ".gitignore"))
-    template("templates/common/newgem.gemspec.tt", File.join(@target, "#{@name}.gemspec"))
     bin_file = File.join(@target, 'bin', @name)
     template("templates/common/bin/cli.tt", bin_file)
     chmod(bin_file, 0744)
