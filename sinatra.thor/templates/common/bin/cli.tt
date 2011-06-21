@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'rack'
+
+rackup_file = File.expand_path('../../config.ru', __FILE__)
+
+ARGV.concat(["-p", "1666"]) unless ARGV.include?("-p")
+ARGV.concat(["-E", "production"]) unless ARGV.include?("-E")
+ARGV << rackup_file unless ARGV.include?(/\.ru/)
+
+Rack::Server.start
+

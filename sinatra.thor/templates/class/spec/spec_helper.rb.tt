@@ -1,0 +1,18 @@
+$LOAD_PATH.unshift File.dirname(__FILE__)
+$LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib'
+p $LOAD_PATH
+require 'rack/test'
+require 'support/struct_matcher'
+require '<%=@name%>'
+
+
+class <%=@constant_name%>::App
+  set :environment, :test
+end
+
+
+RSpec.configure do |c|
+  c.mock_with :rspec
+  c.include Rack::Test::Methods
+  c.include Matchers
+end

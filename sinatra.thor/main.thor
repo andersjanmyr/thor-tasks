@@ -6,24 +6,49 @@ class Sinatra < Thor
     File.dirname(__FILE__)
   end
   
-  desc 'create NAME', 'Generate a new sinatra app'
+  desc 'simple NAME', 'Generate a new simple app'
   method_option :app, :type => :boolean, :default => false, :aliases => %w(-a)
-  def create(name)
-    @dir = Thor::Util.snake_case(name)
-    puts "Creating new sinatra app #{@dir}"
-    directory('templates/common', @dir)
-    directory('templates/simple', @dir)
+  def simple(name)
+    setup name
+    puts "Creating new Sinatra simple #{@name}"
+    common
+    directory('templates/simple', @target)
   end
 
-  desc 'create_app NAME', 'Generate a new sinatra app with class'
-  def create_app(name) 
-    @dir = Thor::Util.snake_case(name)  
-    @name = Thor::Util.camel_case(name)
-    puts "Creating new sinatra app, with class #{@dir}"
-    directory('templates/common', @dir)
-    template("templates/class/lib/app.rb.tt", "#{@dir}/lib/#{@dir}.rb")
-    template("templates/class/lib/version.rb.tt", "#{@dir}/lib/#{@dir}/version.rb")
-    template("templates/class/config.ru.tt", "#{@dir}/config.ru")   
+  desc 'app NAME', 'Generate a new app with class'
+  def app(name) 
+    setup name
+    puts "Creating new Sinatra App #{@name}"
+    common
+    template("templates/class/lib/app.rb.tt", "#{@target}/lib/#{@name}.rb")
+    template("templates/class/lib/version.rb.tt", "#{@target}/lib/#{@name}/version.rb")
+    template("templates/class/spec/spec_helper.rb.tt", "#{@target}/spec/spec_helper.rb")
+    template("templates/class/spec/support/struct_matcher.rb", "#{@target}/spec/support/struct_matcher.rb")
+    template("templates/class/spec/app/app_spec.rb.tt", "#{@target}/spec/app/#{@name}_spec.rb")
+    template("templates/class/config.ru.tt", "#{@target}/config.ru")   
+  end
+
+  private
+  
+  def setup name
+    @name = name
+    @target = File.join(Dir.pwd, name)
+    @constant_name = name.split('_').map{|p| p.capitalize}.join
+    @constant_name = @constant_name.split('-').map{|q| q.capitalize}.join('::') if @constant_name =~ /-/
+    @constant_array = @constant_name.split('::')
+  end
+
+  def common
+    template(File.join("templates/common/Gemfile.tt"), File.join(@target, "Gemfile"))
+    template(File.join("templates/common/Rakefile.tt"), File.join(@target, "Rakefile"))
+    template(File.join("templates/common/gitignore.tt"), File.join(@target, ".gitignore"))
+    template(File.join("templates/common/newgem.gemspec.tt"), File.join(@target, "#{@name}.gemspec"))
+    template(File.join("templates/common/bin/cli.tt"), File.join(@target, 'bin', @name))
+  end
+
+  def init_git
+    Bundler.ui.info "Initializating git repo in #{@name}"
+    Dir.chdir(@target) { `git init`; `git add .` }
   end
   
 end

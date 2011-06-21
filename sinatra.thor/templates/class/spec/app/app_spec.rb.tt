@@ -1,12 +1,13 @@
 # encoding: UTF-8
-require 'spec_helper'
+ep = File.expand_path('..', File.dirname(__FILE__))
+require "#{ep}/spec_helper"
 require 'json'
-require '<%= dir %>'
+require '<%=@name%>'
 
 describe 'Application' do
 
   def app
-    <%= @name %>::App
+    <%=@constant_name%>::App
   end
 
   it "get /env shows the environment" do

@@ -1,6 +1,5 @@
 $LOAD_PATH.unshift File.dirname(__FILE__) + '/lib'
-require 'bundler'
-Bundler.require
+$LOAD_PATH.unshift File.dirname(__FILE__) + '/views'
 
 require '<%= @dir %>'
 run <%= @name %>::App

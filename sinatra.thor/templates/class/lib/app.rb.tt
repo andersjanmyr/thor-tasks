@@ -1,18 +1,21 @@
 require 'sinatra/base'
-require 'bundler'
-Bundler.require
 
-module <%= @name %>
-  class App < Sinatra::Base
-    configure(:development) do
-      require 'sinatra/reloader'
-      register Sinatra::Reloader
-      also_reload "lib/**/*.rb"
-    end
+<%- @constant_array.each_with_index do |c,i| -%>
+<%= '  '*i %>module <%= c %>
+<%- end -%>
+<%= '  '* @constant_array.size %>class App < Sinatra::Base
+<%= '  '* @constant_array.size %>  configure(:development) do
+<%= '  '* @constant_array.size %>    require 'sinatra/reloader'
+<%= '  '* @constant_array.size %>    register Sinatra::Reloader
+<%= '  '* @constant_array.size %>    also_reload "lib/**/*.rb"
+<%= '  '* @constant_array.size %>  end
 
-    get '/env' do
-      p request.env
-      request.env.inspect
-    end
-  end
-end
+<%= '  '* @constant_array.size %>  get '/env' do
+<%= '  '* @constant_array.size %>    p request.env
+<%= '  '* @constant_array.size %>    request.env.inspect
+<%= '  '* @constant_array.size %>  end
+<%= '  '* @constant_array.size %>end
+<%- (@constant_array.size-1).downto(0) do |i| -%>
+<%= '  '*i %>end
+<%- end -%>
+
