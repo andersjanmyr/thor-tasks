@@ -7,7 +7,7 @@ tab :name => "Spork", :settings => "Ocean" do
 end
 
 tab :name => "Watchr", :settings => "Basic" do
-  run "watch"
+  run "wat"
 end
 
 tab :name => "LiveReload", :settings => "Homebrew" do
