@@ -5,10 +5,6 @@
     line-height: 120%;
 }
 
-.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
-    text-transform: none;
-}
-
 .reveal table pre {
     margin: 20px 0;
 }

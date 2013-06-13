@@ -19,7 +19,9 @@ body {
     font-size: 36px;
     font-weight: 200;
     letter-spacing: -0.02em;
-    background-image: url(jayway-logo.png) no-repeat 0 98%;
+    background-image: url(/theme/jayway-logo.png);
+    background-position: 10px 98%;
+    background-repeat: no-repeat;
 }
 
 /*********************************************
@@ -35,7 +37,9 @@ body {
     margin: 0 0 0.4em 0;
     font-family: 'News Cycle', Impact, sans-serif;
     line-height: 0.9em;
+    text-transform: none;
 }
+
 
 
 /*********************************************
