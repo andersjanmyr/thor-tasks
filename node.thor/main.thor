@@ -1,4 +1,4 @@
-class Showoff < Thor::Group
+class Node < Thor::Group
   include Thor::Actions
 
   desc 'Generates a Node project'
