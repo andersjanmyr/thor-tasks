@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<title><%= name %></title>
+
+<meta name="author" content="Anders Janmyr">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css">
+<link rel="stylesheet" href="theme/jayway.css">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+<link rel="stylesheet" href="local.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section data-markdown>
+            # <%= name %>
+            ### http://anders.janmyr.com
+            ### @andersjanmyr
+            ### anders.janmyr@jayway.com
+        </section>
+
+        <section>
+            <section data-markdown>
+                <script type='text/template'>
+                # First Section
+                </script>
+            </section>
+            <section data-markdown>
+                <script type='text/template'>
+                # Second section
+                </script>
+            </section>
+        </section>
+
+        <section>
+            <section data-markdown>
+                <script type='text/template'>
+                <img src='stupid-questions.jpg' align='right' alt='questions'/>
+
+                # Questions
+                ### http://anders.janmyr.com
+                ### @andersjanmyr
+                ### anders.janmyr@jayway.com
+                </script>
+            </section>
+            <section data-markdown>
+                <script type='text/template'>
+                # Blogs
+                ## Config
+
+                http://goo.gl/sS8Kv
+
+                ## Finding
+
+                http://goo.gl/qQVsP
+                </script>
+            </section>
+        </section>
+    </div>
+
+
+</div>
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
+
+<script>
+
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+    theme: Reveal.getQueryHash().theme,
+    transition: Reveal.getQueryHash().transition || 'default',
+    history: true,
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+
+
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+    ]
+});
+
+</script>
+
+</body>
+</html>
